@@ -1,0 +1,8 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .custom-toolbar {
+    background-color: #c95aad; 
+    color: rgb(0, 0, 0);
+  }  
