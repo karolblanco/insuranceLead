@@ -1,8 +1,9 @@
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 @Injectable({providedIn: 'root'})
 export class HttpService {
+    private  apiUrl = 'https://localhost:7196/api/PolicyHolder'; 
 
     constructor(private httpClient : HttpClient) { }
     
@@ -11,6 +12,28 @@ export class HttpService {
         paramsHttp = paramsHttp.append('size', size);
         paramsHttp = paramsHttp.append('page', page);
         paramsHttp = paramsHttp.append('search', search);
-        return this.httpClient.get('http://localhost:7196/api/PolicyHolder' , {params: paramsHttp});
+        return this.httpClient.get(this.apiUrl , {params: paramsHttp});
     }
-}
+
+    delete(id : number) {
+        const option = {
+            headers: new HttpHeaders({
+                'Content-Type' : 'application/json'
+            })
+        }
+        return this.httpClient.delete(this.apiUrl+`/${id}`, option)
+    }
+
+    createPolicyHolder(policyHolder: any) {
+        return this.httpClient.post(this.apiUrl, policyHolder);
+      }
+    
+    findPolicyHolderById(id: number) {
+        return this.httpClient.get<any>(this.apiUrl+`/${id}`)
+         
+        }
+    
+    }
+
+
+        

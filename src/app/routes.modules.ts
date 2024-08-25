@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { globalRoutes } from './modules/global/global.routing';
 import { policyRoutes } from './modules/policy-holder/policy-holder.routing';
 
@@ -7,7 +7,7 @@ import { policyRoutes } from './modules/policy-holder/policy-holder.routing';
 @NgModule({
     imports: [RouterModule.forChild([
         ...globalRoutes,
-        ...policyRoutes
+        ...policyRoutes,
     ])],
     exports: [RouterModule]
 })

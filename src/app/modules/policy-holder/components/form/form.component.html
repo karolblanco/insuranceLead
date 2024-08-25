@@ -1,1 +1,79 @@
-<p>form works!</p>
+<h1 mat-dialog-title>Crear asegurado</h1>
+<div mat-dialog-content>
+     <form [formGroup] ="formGroup">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field>
+                        <mat-label>Numero de identificacion</mat-label>
+                        <input formControlName="identificationNumber" name="identificationNumber"  matInput type="text">
+                      </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field>
+                        <mat-label>Primer nombre</mat-label>
+                        <input formControlName="firstName" name="firstName" matInput type="text">
+                      </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field>
+                        <mat-label >Segundo nombre</mat-label>
+                        <input formControlName="middleName" name="middleName" matInput type="text">
+                      </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field>
+                        <mat-label>Primer apellido</mat-label>
+                        <input formControlName="lastName" name="lastName"  matInput type="text">
+                      </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field>
+                        <mat-label>Segundo apellido</mat-label>
+                        <input formControlName="secondLastName" name="secondLastName" matInput type="text">
+                      </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field>
+                        <mat-label>Teléfono</mat-label>
+                        <input formControlName="phone" name="phone" matInput type="text">
+                      </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input formControlName="email" name="email" matInput type="text">
+                      </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field>
+                        <mat-label>Fecha de nacimiento</mat-label>
+                        <input formControlName="birthDate" name="birthDate"
+                         matInput [matDatepicker]="dp3" >
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
+                        <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+                      </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field floatLabel="always">
+                        <mat-label>Valor solicitud</mat-label>
+                        <input formControlName="estimatedValue" name="estimatedValue" matInput type="number" class="example-right-align" placeholder="0" />
+                        <span matTextPrefix>$&nbsp;</span>
+                        <span matTextSuffix>.00</span>
+                      </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field>
+                        <mat-label >Observaciones</mat-label>
+                        <textarea formControlName="remark" name="remark" matInput></textarea>
+                      </mat-form-field>
+                </div>
+            </div>
+        </div>
+     </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="cancel()" >Cancelar</button>
+    <button mat-raised-button color="primary" (click)="save()">Guardar</button>
+</div>

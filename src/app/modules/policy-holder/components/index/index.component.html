@@ -1,1 +1,135 @@
-<p>index cc works!</p>
+<mat-toolbar class="custom-toolbar">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col 6">
+                <button (click)="createHolder()" mat-flat-button class="my-2" color="primary">
+                    <mat-icon>add_circle_outline</mat-icon>
+                    Crear
+                </button>
+            </div>
+            <div class="col 6">
+                <mat-form-field appearance="fill">
+                    <mat-label>Buscar</mat-label>
+                    <input [(ngModel)] = "searchText" name="searchText" (keyup.enter)="FindAll()"  matInput >
+                    <mat-icon matSuffix>search</mat-icon>
+                  </mat-form-field>
+
+            </div>
+        </div>
+    </div>
+</mat-toolbar>
+
+<div class="container-fluid my-3">
+    <div class="row">
+        <div class="col">
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                    <!--- Note that these columns can be defined in any order.
+                          The actual rendered columns are set as a property on the row definition" -->
+                  
+                    <!-- id Column -->
+                    <ng-container matColumnDef="identificationNumber">
+                      <th mat-header-cell *matHeaderCellDef> Cedula </th>
+                      <td mat-cell *matCellDef="let element"> {{element.identificationNumber}} </td>
+                    </ng-container>
+                  
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="firstName">
+                      <th mat-header-cell *matHeaderCellDef> Nombres </th>
+                      <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+                    </ng-container>
+                  
+                    <!-- lastName Column -->
+                    <ng-container matColumnDef="lastName">
+                      <th mat-header-cell *matHeaderCellDef> Primer apellido </th>
+                      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+                    </ng-container>
+                  
+                    <!-- secondLastName Column -->
+                    <ng-container matColumnDef="secondLastName">
+                      <th mat-header-cell *matHeaderCellDef> Segundo apellido </th>
+                      <td mat-cell *matCellDef="let element"> {{element.secondLastName}} </td>
+                    </ng-container>
+    
+                                    <!-- phone Column -->
+                                    <ng-container matColumnDef="phone">
+                                        <th mat-header-cell *matHeaderCellDef> Telefono </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+                                      </ng-container>
+                                    
+                                      <!-- email Column -->
+                                      <ng-container matColumnDef="email">
+                                        <th mat-header-cell *matHeaderCellDef> Correo </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                                      </ng-container>
+                                    
+                                      <!-- birthDate Column -->
+                                      <ng-container matColumnDef="birthDate">
+                                        <th mat-header-cell *matHeaderCellDef> Fecha de nacimiento </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.birthDate}} </td>
+                                      </ng-container>
+                                    
+                                      <!-- estimatedValue Column -->
+                                      <ng-container matColumnDef="estimatedValue">
+                                        <th mat-header-cell *matHeaderCellDef> Valor estimado </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.estimatedInsuranceValue}} </td>
+                                      </ng-container>
+    
+                                              <!-- remark Column -->
+                                              <ng-container matColumnDef="remark">
+                                                <th mat-header-cell *matHeaderCellDef> Observaciones </th>
+                                                <td mat-cell *matCellDef="let element">  {{element.remark}}</td>
+                                              </ng-container>
+                                            
+                                              <!-- actions Column -->
+                     <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef> Actions </th>
+                          <td mat-cell *matCellDef="let element"> 
+                            <div class="row">
+                                <div class="col-3">
+                                  <button (click)="delete(element.identificationNumber)" matTooltip="Eliminar elemento" color="warn"  mat-mini-fab>
+                                    <mat-icon>delete</mat-icon>
+                                      </button> 
+                                </div>                  
+                                  
+                                <div class="col-3">
+                              <button 
+                              matTooltip="Editar" mat-mini-fab >
+                                <mat-icon>edit</mat-icon>
+                              </button>
+                            </div>  
+                          </div>
+                             </td>
+                       </ng-container>
+                  
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                              
+                    <tr class="mat-row" *matNoDataRow="">
+                        <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+                            <div class="message-no-data" >
+                                <mat-icon class="mx-3">error</mat-icon>
+                                 No existen datos para mostrar
+                            </div>
+                        </td>
+                    </tr>
+
+                  </table>
+                  
+                  <mat-paginator 
+                  (page)="changePage($event)"
+                  [length]="totalAmount"
+                  [pageSize]="size"
+                  [showFirstLastButtons]="true"
+                  [pageSizeOptions]="pageOptions"
+                  [pageIndex]="pageNumber"
+                 >
+                 </mat-paginator>
+            </div>
+           
+
+              
+        </div>
+    </div>
+</div>
