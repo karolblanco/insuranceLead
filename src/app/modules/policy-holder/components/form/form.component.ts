@@ -38,7 +38,6 @@ export class FormComponent implements OnInit {
   save() {
     if (this.formGroup.valid) {
       const policyHolder = this.formGroup.value;
-      if (this.data.type === 'Create') {
         this.httpService.createPolicyHolder(policyHolder).subscribe({
           next: (response: any) => {
             this.toastr.success('Policy Holder creado satisfactoriamente', 'Confirmación');
@@ -49,34 +48,10 @@ export class FormComponent implements OnInit {
             console.error('Error al crear Policy Holder:', error);
           }
         });
-      } else if (this.data.type === 'view') {
-
-      }
     } else {
       this.toastr.error('Por favor, complete todos los campos requeridos', 'Error');
     }
   }
-
-/*
-  obtain() {
-    if (this.formGroup.valid) {
-          const id = this.formGroup.value.identificationNumber;
-          if (this.data.type === 'view') {
-              this.httpService.findPolicyHolderById(id).subscribe({
-                next: (holder) => {
-                  this.formGroup.patchValue(holder);
-                  this.formGroup.disable();
-                },
-                error: (error) => {
-                  console.error('Error al crear Policy Holder:', error);
-                }
-              });
-          } 
-      } else {
-        this.toastr.error('Por favor, complete todos los campos requeridos', 'Error');
-      }
-  }
-*/
 
   initForm() {
     this.formGroup = this.fb.group({
@@ -89,7 +64,7 @@ export class FormComponent implements OnInit {
       email:[{value: null, disabled:false },  [Validators.required, Validators.email]],
       birthDate:[{value: null, disabled:true },            [Validators.required]],
       estimatedValue:[{value: null, disabled:false },       [Validators.required]],
-      remark: [{value: null, disabled:false }, [Validators.required]],
+      remark: [{value: null, disabled:false }],
     });
   }
 }

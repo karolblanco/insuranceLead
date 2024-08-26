@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 
 @Injectable({providedIn: 'root'})
 export class HttpService {
-    private  apiUrl = 'https://localhost:7196/api/PolicyHolder'; 
+    private  apiUrl = 'https://localhost:7196/api/policyHolder/'; 
 
     constructor(private httpClient : HttpClient) { }
     
@@ -21,15 +21,15 @@ export class HttpService {
                 'Content-Type' : 'application/json'
             })
         }
-        return this.httpClient.delete(this.apiUrl+`/${id}`, option)
+        return this.httpClient.delete(this.apiUrl+`${id}`, option)
     }
 
     createPolicyHolder(policyHolder: any) {
-        return this.httpClient.post(this.apiUrl, policyHolder);
+        return this.httpClient.post<any>(this.apiUrl, policyHolder);
       }
     
     findPolicyHolderById(id: number) {
-        return this.httpClient.get<any>(this.apiUrl+`/${id}`)
+        return this.httpClient.get<any>(this.apiUrl+`${id}`)
          
         }
     

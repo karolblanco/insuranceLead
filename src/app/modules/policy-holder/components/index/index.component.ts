@@ -8,7 +8,6 @@ import { PolicyHolderService } from '../../../../services/policy-holder.service'
 
 @Component({
   selector: 'app-index',
-  standalone: false,
   templateUrl: './index.component.html',
   styleUrl: './index.component.css'
 })
