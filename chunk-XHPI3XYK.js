@@ -1,0 +1,1 @@
+import{a as e}from"./chunk-6BYCIWQM.js";import"./chunk-43KO6KHD.js";import{Na as i}from"./chunk-UQZZTRZR.js";import{$ as t,Lc as r,ja as m}from"./chunk-QVJMDBUU.js";var n=class o{static \u0275fac=function(p){return new(p||o)};static \u0275mod=m({type:o});static \u0275inj=t({imports:[r,e,i]})};export{n as PolicyHolderModule};
